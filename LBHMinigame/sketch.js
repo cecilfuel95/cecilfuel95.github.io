@@ -302,5 +302,4 @@ function resetGame() {
     lowScore = score;
   }
   score = 0;
-  save(canvas, 'canvas.png');
 }
