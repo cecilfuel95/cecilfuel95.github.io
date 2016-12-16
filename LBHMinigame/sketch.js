@@ -271,7 +271,7 @@ function generateOranges() {
 function endMessage() {
   if (score < 150 && lowScore >= 150) {
     messageReceived = true;
-    text("Wait, are you serious?\nWow, that's actually... impressively bad." + 
+    text("Wait, are you serious?\nWow, that's... impressively bad, actually." + 
     "\nWell done, I guess? \n Press SPACE reclaim your dignity!", (1920/2)*d, (1400/2)*d);
   }
   
