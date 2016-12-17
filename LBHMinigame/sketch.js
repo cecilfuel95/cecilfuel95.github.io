@@ -1,18 +1,14 @@
 var gameStateStart = true; var gameStatePlay = false; var gameStateEnd = false;
 var noColasLeft = false; var noOrangesLeft = false;
 var d;
-
 var brock; var energy = 100; var score = 0; var highScore = 0; var lowScore = 0;
-
 var colas; var cola; var oranges; var orange;
-
 var bg; var bg01; var bg02; var bg03; var bgX = 0;
-
 var lbhLogo; var messageReceived = false;
-
 var fric = .75;
 var maxSpeed = 25*d;
 var canvas;
+var takeSnapshot; var snapshotTaken = false;
 
 var lbhFont; var fontReady = false;
 
@@ -46,6 +42,8 @@ function setup() {
   var brockDead = brock.addAnimation("dead", "assets/brock31D.png");
   colas = new Group();
   oranges = new Group();
+  takeSnapshot = createButton('Take a Snapshot!');
+  takeSnapshot.position(-100, -100);
 }
 
 function draw() {
@@ -62,8 +60,6 @@ function draw() {
       energy = 100;
     }
   }
-  
-      //console.log(energy + " " + brock.velocity.y);
   
   if(gameStatePlay && keyIsDown(UP_ARROW)){
     changeFriction(true);
@@ -91,7 +87,6 @@ function draw() {
   
   generateColas();
   generateOranges();
-    
   moveBackground();
   drawSprites(colas);
   drawSprites(oranges);
@@ -126,16 +121,12 @@ function checkGameState(){
       gameStateStart = false;
       gameStateEnd = false;                       
   }
-      
   else if (gameStatePlay && energy <= 0) {
     gameStateEnd = true;
     gameStatePlay = false;
     gameStateStart = false;
     brock.velocity.y = 0;
   }
-  /*else if (gameStatePlay && (noColasLeft && noOrangesLeft)) {
-    
-  }*/
   else if (gameStateEnd && noColasLeft && noOrangesLeft && (keyIsDown(keyCode = 32))) {
     gameStatePlay = true;
     gameStateEnd = false;
@@ -172,41 +163,40 @@ function changeFriction(moving) {
     brock.friction = 1.1;
   else 
     brock.friction = fric;
-  //console.log(brock.friction + " " + brock.velocity.y);
 }
  
 function drawStats() {
-    rect((1920/2-200)*d, 100*d, 400*d, 80*d, 10*d);
+    rect(760*d, 100*d, 400*d, 80*d, 10*d);
     if(energy >= 33) {fill('yellow');}
     else {fill('red');}
-    if (energy >= 1){rect((1920/2-200)*d, 100*d, 4*energy*d, 80*d, 10*d);}
+    if (energy >= 1){rect(760*d, 100*d, 4*energy*d, 80*d, 10*d);}
     fill('white');
     textSize(50*d);
-    text('ENERGY', (1920/2-100)*d, 90*d);
+    text('ENERGY', 860*d, 90*d);
     textSize(75*d);
     fill(0,99, 30);
     if(gameStatePlay) {
-      text('Score: ' + score, (1920/2+450)*d, 160*d);
+      text('Score: ' + score, 1410*d, 160*d);
       textSize(30*d);
-      text('(Best: ' + highScore + ')', (1920/2+550)*d, 200*d);
+      text('(Best: ' + highScore + ')', 1510*d, 200*d);
       if (lowScore !== 0 && highScore !== 0 && lowScore !== highScore && messageReceived) {
-        text('(Worst: ' + lowScore + ')', (1920/2+550)*d, 240*d);
+        text('(Worst: ' + lowScore + ')', 1510*d, 240*d);
       }
     }
     if(gameStateEnd) {
       textAlign(CENTER,CENTER);
       textSize(125*d);
       fill(0,214, 64);
-      text('Score: ' + score, (1920/2)*d, (1000/2)*d);
+      text('Score: ' + score, 960*d, 500*d);
       textSize(50*d);
       endMessage();
+      takeSnapshot.position(810*d, 888.9*d);
+      takeSnapshot.mousePressed(snapShot);
     }
-    
-    if (score <= 5000) {energy-=.01;}
-    else if (score <= 15000) {energy-=.02;}
-    else if (score <= 45000) {energy-=.04;}
-    else {energy-=.08;}
-    
+      if (score <= 5000) {energy-=.01;}
+      else if (score <= 15000) {energy-=.02;}
+      else if (score <= 45000) {energy-=.04;}
+      else {energy-=.08;}
     if(gameStatePlay && frameCount%5 === 0) {
     score++;
     }
@@ -251,7 +241,6 @@ function generateOranges() {
     thisOrange.addImage(orange);
     oranges.add(thisOrange);
   }
-  
   for(var i = 0; i<oranges.length; i++) {
     oranges[i].position.x -=20*d;
     if(gameStatePlay && oranges[i].overlap(brock)) {
@@ -271,10 +260,9 @@ function generateOranges() {
 function endMessage() {
   if (score < 150 && lowScore >= 150) {
     messageReceived = true;
-    text("Wait, are you serious?\nWow, that's... impressively bad, actually." + 
+    text("Wait, are you serious?\nWow, that's.... impressively bad, actually." + 
     "\nWell done, I guess? \n Press SPACE reclaim your dignity!", (1920/2)*d, (1400/2)*d);
   }
-  
   else if (score < lowScore) {
     messageReceived = true;
     text("Wow, that's your worst score yet!\n You are a TRUE Lunch Box... Hero?" + 
@@ -302,4 +290,38 @@ function resetGame() {
     lowScore = score;
   }
   score = 0;
+  takeSnapshot.position(-100, -100);
+  snapshotTaken = false;
+}
+
+function snapShot() {
+  takeSnapshot.position(-100, -100);
+  textSize(30*d);
+  fill(0,99, 30);
+  var tempScore = 0;
+  if(score > highScore){tempScore = score;}
+  else{tempScore = highScore;}
+  text('(Best: ' + tempScore + ')', 1510*d, 200*d);
+  if (lowScore !== 0 && highScore !== 0 && lowScore !== highScore && messageReceived) {
+    if (score < lowScore) {tempScore = score;}
+    else{tempScore = lowScore;}
+    text('(Worst: ' + tempScore + ')', 1510*d, 240*d);
+  }
+  noStroke()
+  fill(255, 175, 0);
+  rect((1920/2-lbhLogo.width/2.2)*d, 10*d, (lbhLogo.width/1.1)*d, (lbhLogo.height/1.1)*d, 10);
+  fill('white');
+  textAlign(CENTER, CENTER);
+  textSize(25*d);
+  text("The Mini-game! Based off the real game, coming soon!", (1920/2)*d, (875/2)*d);
+  text("Created by Eric Kevin Cecil"+
+  "\nSpecial thanks to Catalina Von Wrangel, Jose Guzman Fierro, Brandon Wilson,"+
+  "\nProfs. Clay Ewing and Zeven Rodriguez, and the University of Miami."+
+  "\n[]_[]", 960*d, 930*d);
+  image(lbhLogo, (1920/2-lbhLogo.width/2.4)*d, 25*d, (lbhLogo.width/1.2)*d, (lbhLogo.height/1.2)*d);
+  if(!snapshotTaken) {
+    save(canvas, 'playLunchBoxHero_' + year()+month()+day()+'_'+hour()+' '+minute()+'_'+second()+'.png');
+    snapshotTaken = true;
+  }
+  textAlign(LEFT, BASELINE);
 }
