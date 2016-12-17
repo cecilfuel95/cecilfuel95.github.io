@@ -43,6 +43,7 @@ function setup() {
   colas = new Group();
   oranges = new Group();
   takeSnapshot = createButton('Take a Snapshot!');
+  takeSnapshot.size(400*d, 75*d);
   takeSnapshot.position(-100, -100);
 }
 
@@ -190,7 +191,7 @@ function drawStats() {
       text('Score: ' + score, 960*d, 500*d);
       textSize(50*d);
       endMessage();
-      takeSnapshot.position(810*d, 888.9*d);
+      takeSnapshot.position(760*d, 888.9*d);
       takeSnapshot.mousePressed(snapShot);
     }
       if (score <= 5000) {energy-=.01;}
