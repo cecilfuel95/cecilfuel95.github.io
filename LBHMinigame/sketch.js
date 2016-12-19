@@ -12,6 +12,12 @@ var takeSnapshot; var snapshotTaken = false;
 
 var lbhFont; var fontReady = false;
 
+var gssLoop; var gspIntro; var gspLoop; var gssLoopCount = 0;
+
+var bh1; var bh2; var bh3; var hurtSounds; var hurtCheck;
+
+var bd; var deadCheck = false;
+
 function fontRead(){
   fontReady = true;
 }
@@ -22,6 +28,12 @@ function preload() {
   orange = loadImage("assets/orange.png");
   lbhLogo = loadImage("assets/lbhLogo.png");
   lbhFont = loadFont("assets/RifficFree-Bold.ttf", fontRead);
+  gssLoop = loadSound("assets/GSSLoop.mp3");
+  gspLoop = loadSound("assets/GSPLoop.mp3");
+  bh1 = loadSound("assets/sBrockHurt1.mp3");
+  bh2 = loadSound("assets/sBrockHurt2.mp3");
+  bh3 = loadSound("assets/sBrockHurt3.mp3");
+  bd = loadSound("assets/sBrockDead.mp3");
 }
 
 function setup() {
@@ -34,25 +46,33 @@ function setup() {
   brock.friction = fric;
   brock.maxSpeed = maxSpeed;
   var brockNorm = brock.addAnimation("normal", "assets/brock02N.png", "assets/brock01N.png", "assets/brock02N.png", "assets/brock01N.png");
-  brockNorm.frameDelay = 20;
+  brockNorm.frameDelay = 32;
   var brockPant = brock.addAnimation("panting", "assets/brock11P.png", "assets/brock12P.png", "assets/brock11P.png", "assets/brock12P.png");
-  brockPant.frameDelay = 8;
+  brockPant.frameDelay = 12;
   var brockHurt = brock.addAnimation("hurt", "assets/brock21H.png");
-  brockHurt.frameDelay = 8;
+  brockHurt.frameDelay = 12;
   var brockDead = brock.addAnimation("dead", "assets/brock31D.png");
   colas = new Group();
   oranges = new Group();
+  hurtSounds = new Group();
   takeSnapshot = createButton('Take a Snapshot!');
   takeSnapshot.size(400*d, 75*d);
   takeSnapshot.position(-100, -100);
+  gssLoop.setVolume(0.1);
+  gspLoop.setVolume(0.1);
 }
 
 function draw() {
   checkGameState();
+  checkMusic();
   
   if (energy <= 0) {
     brock.changeAnimation("dead");
     energy = 0;
+    if (!bd.isPlaying() && !deadCheck) {
+      bd.play(); 
+      deadCheck = true;
+    }
   }
   else if (energy <= 33) {brock.changeAnimation("panting");}
   else {
@@ -82,8 +102,16 @@ function draw() {
     brock.velocity.y = 0;
     
   if(gameStatePlay && brock.overlap(colas) && energy > 0) {
+    
     energy -=1;
     brock.changeAnimation("hurt");
+    if (!hurtCheck && energy > 5) {
+      hurtSound();
+    }
+    hurtCheck = true;
+  }
+  if(!brock.overlap(colas)) {
+    hurtCheck = false;
   }
   
   generateColas();
@@ -109,18 +137,28 @@ function draw() {
     brock.position.x = 300*d;
     brock.position.y = 540*d;
     brock.scale = d;
+    if(gssLoop.isLoaded() && !gssLoop.isPlaying() && gssLoopCount === 0){
+      gssLoop.play();
+      gssLoopCount++;
+    }
   }
   else {
     drawStats();
     checkBounds();
   }
+    fill('white');
+    textAlign(CENTER, CENTER);
+    textSize(25*d);
+    text("Music: Ghost Fight by Toby Fox", 1735*d, 980*d);
 }
 
 function checkGameState(){
   if (gameStateStart && (keyIsDown(keyCode = 32))) {
       gameStatePlay = true;
       gameStateStart = false;
-      gameStateEnd = false;                       
+      gameStateEnd = false;  
+      gssLoop.stop();
+      gspLoop.jump(0);
   }
   else if (gameStatePlay && energy <= 0) {
     gameStateEnd = true;
@@ -214,6 +252,24 @@ function checkBounds() {
    }
 }
 
+function checkMusic() {
+  if(gssLoop.currentTime() >= 7.76 && gssLoopCount === 1) {
+    gssLoop.jump(0);
+    gssLoopCount++;
+  }
+  if(gssLoop.currentTime() <= 4.06 && gssLoop.currentTime() >= 4 && gssLoopCount === 2) {
+    gssLoopCount--;  
+  }
+  if(gssLoop.isPlaying && gspLoop.isPlaying() && gssLoopCount !== 5) {
+    gssLoop.disconnect();
+    gssLoopCount = 1;
+  }
+  if(gspLoop.currentTime() >= 46.89 && gssLoopCount %4 === 1) {
+    gspLoop.jump(0);
+    gssLoopCount = 5;
+  }
+}
+
 function generateColas() {
    if (gameStatePlay && frameCount%(int)(random(0, 180)) === 0){
     var thisCola = createSprite(2200*d, d*(random(301, 929)));
@@ -238,7 +294,7 @@ function generateOranges() {
    if (gameStatePlay && frameCount%(int)(random(0, 120)) === 0){
     var thisOrange = createSprite(2200*d, d*(random(301, 929)));
     thisOrange.scale = d;
-    thisOrange.setCollider("circle", 0,0,20*d)
+    thisOrange.setCollider("circle", 0,0,20*d);
     thisOrange.addImage(orange);
     oranges.add(thisOrange);
   }
@@ -257,7 +313,22 @@ function generateOranges() {
     noOrangesLeft = true;
   }
 }
- 
+
+function hurtSound() {
+  var num = (int)(random(1, 4));
+  switch(num) {
+    case 1:
+      bh1.play();
+      break;
+    case 2:
+      bh2.play();
+      break;
+    case 3: 
+      bh3.play();
+      break;
+  }
+}
+
 function endMessage() {
   if (score < 150 && lowScore >= 150) {
     messageReceived = true;
@@ -293,6 +364,7 @@ function resetGame() {
   score = 0;
   takeSnapshot.position(-100, -100);
   snapshotTaken = false;
+  deadCheck = false;
 }
 
 function snapShot() {
