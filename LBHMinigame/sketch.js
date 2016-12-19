@@ -58,8 +58,8 @@ function setup() {
   takeSnapshot = createButton('Take a Snapshot!');
   takeSnapshot.size(400*d, 75*d);
   takeSnapshot.position(-100, -100);
-  gssLoop.setVolume(0.1);
-  gspLoop.setVolume(0.1);
+  gssLoop.setVolume(0.07);
+  gspLoop.setVolume(0.07);
 }
 
 function draw() {
