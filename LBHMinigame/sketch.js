@@ -25,7 +25,7 @@ function fontRead(){
 function preload() {
   bg = loadImage("assets/background.png");
   cola = loadImage("assets/cola01N.png");
-  orange = loadImage("assets/orange.png");
+  orange = loadImage("assets/orange1.png");
   lbhLogo = loadImage("assets/lbhLogo.png");
   lbhFont = loadFont("assets/RifficFree-Bold.ttf", fontRead);
   gssLoop = loadSound("assets/GSSLoop.mp3");
@@ -58,8 +58,8 @@ function setup() {
   takeSnapshot = createButton('Take a Snapshot!');
   takeSnapshot.size(400*d, 75*d);
   takeSnapshot.position(-100, -100);
-  gssLoop.setVolume(0.01);
-  gspLoop.setVolume(0.01);
+  gssLoop.setVolume(0.1);
+  gspLoop.setVolume(0.1);
 }
 
 function draw() {
@@ -315,15 +315,16 @@ function generateOranges() {
 }
 
 function hurtSound() {
-  var num = (int)(random(1, 4));
+  var num = (int)(random(1, 6));
+  console.log(num);
   switch(num) {
-    case 1:
+    case 1: case 2:
       bh1.play();
       break;
-    case 2:
+    case 3: case 4:
       bh2.play();
       break;
-    case 3: 
+    case 5: 
       bh3.play();
       break;
   }
@@ -383,6 +384,7 @@ function snapShot() {
   noStroke()
   fill(255, 175, 0);
   rect((1920/2-lbhLogo.width/2.2)*d, 10*d, (lbhLogo.width/1.1)*d, (lbhLogo.height/1.1)*d, 10);
+  drawDot();
   fill('white');
   textAlign(CENTER, CENTER);
   textSize(25*d);
@@ -397,4 +399,15 @@ function snapShot() {
     snapshotTaken = true;
   }
   textAlign(LEFT, BASELINE);
+}
+
+function drawDot() {
+  if(score < 150) { 
+    fill('white');
+    ellipse(0, 0, 3, 3);
+  }
+  else if(score >= 15000) {
+    fill('yellow');
+    ellipse(0, 0, 3, 3);
+  }
 }
