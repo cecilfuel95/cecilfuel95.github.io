@@ -1,0 +1,136 @@
+@import url('https://fonts.googleapis.com/css?family=Merriweather|Titillium+Web');
+
+/*font-family: 'Merriweather', serif;
+font-family: 'Titillium Web', sans-serif;*/
+
+body {
+  max-width: 960px;
+  overflow: auto;
+}
+h1, h2, h3, h4 {
+  font-family: 'Merriweather', serif;
+}
+p, table, ul {
+  font-family: 'Titillium Web', sans-serif;
+}
+h1, h2, h3 {
+  padding: 0px;
+}
+h1, h3 {
+  text-align: center;
+  margin: 0px;
+}
+h4 {
+  font-size: 1.1em;
+  margin: 3px 10px;
+}
+table {
+  margin: 0;
+}
+header {
+  background-color: #bbb;
+}
+img {
+  width: 450px;
+  height: 300px;
+  border: 3px solid black;
+  float: left;
+  margin-right: 5px;
+}
+p {
+  padding: 0;
+  margin: 0% 2%;
+  border-bottom: 1px solid black;
+  width: 96%;
+}
+.noline {
+  border-bottom: 0px;
+}
+a {
+  color: #55f;
+}
+a:visited {
+  color: #00f;
+}
+a:hover {
+  color: #aaf;
+}
+a:active {
+  color: gold;
+}
+article {
+  padding: 5px;
+}
+#education {
+  background-color: #888;
+  float: left;
+}
+#skillset {
+  clear: both;
+  background-color: #ddf;
+  height: 450px;
+  overflow: hidden;
+}
+#education h2, #skillset h2, #exp h2, #projects h2, footer h2 {
+  padding-left: 2%;
+  margin: .5%;
+  border-bottom: 1px solid black;
+}
+#langs, #software, #proglangs {
+  width: 50%;
+  float: left;
+}
+#software {
+  float: right;
+  padding: 12px 0px;
+}
+#langs table, #software table, #proglangs table {
+  width: 90%;
+  margin: 0% 5%;
+}
+tr {
+  background-color: #66f;
+}
+td {
+  background-color: #aaf;
+}
+#langs h3, #proglangs h3 {
+  margin: 5px 0px;
+}
+#software h3 {
+  margin: 10px 0px;
+}
+#exp {
+  background-color: #fdd;
+  clear: both;
+}
+#exp article:nth-child(2n) {
+  background-color: #fbb;
+}
+#projects {
+  background-color: #dfd;
+}
+#projects article:nth-child(2n) {
+  background-color: #bfb;
+}
+#exp h3, #projects h3 {
+  text-align: left;
+  font-size: 1.2em;
+}
+footer {
+  background-color: #bbb;
+}
+ul {
+  width: 90%;
+  margin: 0% 5%;
+  padding: 0%;
+}
+ul li {
+  list-style: none;
+  display: inline-block;
+  width: 28%;
+  padding: 1% 2%;
+  margin: 0%;
+  font-weight: bold;
+  text-align: center;
+}
