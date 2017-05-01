@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Portfolio | Game Development | Eric Kevin Cecil</title>
+    <meta name="keywords" content="eric, kevin, cecil, university, miami, 2018, resume, portfolio, graphic, design, game, development, animation, visual, effects, vfx, production, comedy, writing, cinematography">
+    <meta name="description" content="Eric Kevin Cecil's game development portfolio.">
+    <meta name="author" content="Eric Kevin Cecil">
+    <link rel="stylesheet" href="css/styles.css">
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js"
+    ></script>
+    <script src="jquery.sticky.js"></script>
+    <script>
+      $(document).ready(function(){
+        if($(window).width() >= 640) {
+          $("#sticker").sticky({topSpacing:0});
+        }
+      });
+    </script>
+  </head>
+  <body>
+    <header>
+      <h1>Eric Kevin Cecil</h1>
+      <div id="contact">
+        <p>(812) 508-4032</p>
+        <p>cecilfuel95@miami.edu</p>
+      </div>
+    </header>
+    <nav class="nav" id="sticker">
+      <div>
+        <a href="index.html">Résumé</a>
+        <a href="grdesign.html">Graphic Design</a>
+        <a href="gamedev.html">Game Development</a>
+        <a href="vfx.html">Visual Effects</a>
+        <a href="proddesign.html">Production Design</a>
+        <a href="comedic.html">Comedic Writing</a>
+      </div>
+    </nav>
+    <div id="cover">
+      <main>
+        <h1>Portfolio: Game Development</h1>
+        <section>
+          <h2><em>Lunch Box Hero</em> (In Development)(2017)</h2>
+          <img src="images/lbh.png" alt="Promotional material for the video game Lunch Box Hero.">
+          <div class="description">
+            <p><strong>Description:</strong> 2D video game developed as part of a small team in a Game Development class. Currently on hiatus. Website available <a href="https://spark.adobe.com/page/fT02VSzkdCiWS/">here</a>.</p>
+            <p><strong>Synopsis:</strong> Play as Brock the Broccoli in the battle of health food vs. junk food.</p>
+            <p><strong>Role:</strong> Creator, Story Developer, Lead Asset Artist.</p>
+          </div>
+        </section>
+        <section>
+          <h2><em>The Lunch Box Hero Mini-game</em> (2016)</h2>
+          <img src="images/lbhmg.png" alt="Screenshot from The Lunch Box Hero Mini-game.">
+          <div class="description">
+            <p><strong>Description:</strong> Independent mini-game developed as a tie-in to <em>Lunch Box Hero</em>. Playable <a href="https://cecilfuel95.github.io/LBHMinigame/">here</a>.</p>
+            <p><strong>Role:</strong> Creator, Asset Artist, Programmer.</p>
+          </div>
+        </section>
+        <section class="slideshowInside">
+          <h2><em>Bedford North Lawrence High School: the Video Game</em> (2016)</h2>
+          <img class="mySlides" src="images/bnlhsvg1.png" alt="Screenshot from Bedford North Lawrence High School: the Video Game.">
+          <img class="mySlides" src="images/bnlhsvg3.png" alt="Screenshot from Bedford North Lawrence High School: the Video Game.">
+          <img class="mySlides" src="images/bnlhsvg4.png" alt="Screenshot from Bedford North Lawrence High School: the Video Game.">
+          <img class="mySlides" src="images/bnlhsvg5.png" alt="Screenshot from Bedford North Lawrence High School: the Video Game.">
+          <img class="mySlides" src="images/bnlhsvg6.png" alt="Screenshot from Bedford North Lawrence High School: the Video Game.">
+          <img class="mySlides" src="images/bnlhsvg2.png" alt="Screenshot from Bedford North Lawrence High School: the Video Game.">
+          <img class="mySlides" src="images/bnlhsvg7.png" alt="Screenshot from Bedford North Lawrence High School: the Video Game.">
+          <button class="button" onclick="plusDivs(-1)">&#10094;</button>
+          <button class="button" onclick="plusDivs(+1)">&#10095;</button>
+          <div class="description">
+            <p><strong>Description:</strong> Independent video game project developed as a tool to help students at my former high school familiarizes themselves with the campus.</p>
+            <p><strong>Role:</strong> Creator, Asset Artist, Programmer.</p>
+          </div>
+        </section>
+      </main>
+    </div>
+    <footer>
+      <h2>Copyright 2017</h2>
+    </footer>
+    <script>
+    //Courtesy of  https://www.w3schools.com/w3css/w3css_slideshow.asp
+      var slideIndex = 1;
+      showDivs(slideIndex);
+
+      function plusDivs(n) {
+        showDivs(slideIndex += n);
+      }
+
+      function showDivs(n) {
+        var i;
+        var x = document.getElementsByClassName("mySlides");
+        if (n > x.length) {slideIndex = 1}
+        if (n < 1) {slideIndex = x.length} ;
+        for (i = 0; i < x.length; i++) {
+          x[i].style.display = "none";
+        }
+        x[slideIndex-1].style.display = "block";
+      }
+    </script>
+  </body>
+</html>

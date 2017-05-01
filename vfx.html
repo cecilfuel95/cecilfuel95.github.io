@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Portfolio | Visual Effects(VFX) | Eric Kevin Cecil</title>
+    <meta name="keywords" content="eric, kevin, cecil, university, miami, 2018, resume, portfolio, graphic, design, game, development, animation, visual, effects, vfx, production, comedy, writing, cinematography">
+    <meta name="description" content="Eric Kevin Cecil's visual effects (vfx) portfolio.">
+    <meta name="author" content="Eric Kevin Cecil">
+    <link rel="stylesheet" href="css/styles.css">
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js"
+    ></script>
+    <script src="jquery.sticky.js"></script>
+    <script>
+      $(window).resize(function() {
+        heightResize();
+      });
+      $(document).ready(function(){
+        heightResize();
+        if($(window).width() >= 640) {
+          $("#sticker").sticky({topSpacing:0});
+        }
+      });
+
+      function heightResize() {
+        var iframeWidth = $("iframe").outerWidth();
+        $("iframe").css("height", (iframeWidth*.5625));
+      }
+    </script>
+  </head>
+  <body>
+    <header>
+      <h1>Eric Kevin Cecil</h1>
+      <div id="contact">
+        <p>(812) 508-4032</p>
+        <p>cecilfuel95@miami.edu</p>
+      </div>
+    </header>
+    <nav class="nav" id="sticker">
+      <div>
+        <a href="index.html">Résumé</a>
+        <a href="grdesign.html">Graphic Design</a>
+        <a href="gamedev.html">Game Development</a>
+        <a href="vfx.html">Visual Effects</a>
+        <a href="proddesign.html">Production Design</a>
+        <a href="comedic.html">Comedic Writing</a>
+      </div>
+    </nav>
+    <div id="cover">
+      <main>
+        <h1>Portfolio: Visual Effects (VFX)</h1>
+          <section>
+            <h2><em>The Tartar Effect</em> (2017)</h2>
+            <iframe src="https://player.vimeo.com/video/203945867?color=c9ff23&title=0&byline=0&portrait=0" width="768" height="432" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+            <div class="description">
+              <p><strong>Description:</strong> Short independent project developed entirely within 24 hours.</p>
+              <p><strong>Synopsis:</strong> A secret agent uncovers a shocking secret about his long-dead brother.</p>
+              <p><strong>Role:</strong> Co-Writer, Co-Producer, Production Designer, VFX Artist.</p>
+              <p><strong>Specific VFX Involvement:</strong> Identical henchmen (0:16), secret agent dossier graphics (3:55), closing credit sequence.</p>
+            </div>
+          </section>
+          <section>
+            <h2><em>The Political Autobiography of Deez Nuts</em> (2016)</h2>
+            <iframe src="https://player.vimeo.com/video/162561377?title=0&byline=0&portrait=0" width="768" height="432" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+            <div class="description">
+              <p><strong>Description:</strong> Short mockumentary developed for a Film Production class.</p>
+              <p><strong>Synopsis:</strong> A look into the rise, fall, rise, and fall of enigmatic political figure Deez Nuts.</p>
+              <p><strong>Role:</strong> Writer, Co-Director, Producer, Actor, Editor, VFX Artist.</p>
+              <p><strong>Specific VFX Involvement:</strong> Opening and closing credit sequences, all graphics.</p>
+            </div>
+          </section>
+          <section>
+            <h2><em>Lunch Box Hero Promo Video</em> (2016)</h2>
+            <iframe width="768" height="432" src="https://www.youtube.com/embed/NoHgA5odqQ0?rel=0&amp;showinfo=0" frameborder="0" allowfullscreen></iframe>
+            <div class="description">
+              <p><strong>Description:</strong> Animated promotional video developed for the video game <em>Lunch Box Hero</em>.</p>
+              <p><strong>Synopsis:</strong> An old war between health food and junk food has re-emerged, and it's up to Brock the Broccoli to save the day.</p>
+              <p><strong>Role:</strong> Writer, Editor, Game Asset and VFX Artist.</p>
+              <p><strong>Developed using:</strong> Adobe Illustrator, Premiere, and Autodesk Smoke.</p>
+            </div>
+          </section>
+          <section>
+            <h2><em>Brian Regan: Stupid in School</em> (2011)</h2>
+            <iframe width="768" height="432" src="https://www.youtube.com/embed/QdENhhG4Us8?rel=0&amp;showinfo=0" frameborder="0" allowfullscreen></iframe>
+            <div class="description">
+              <p><strong>Description:</strong> Animation based on stand-up comedian Brian Regan's "Stupid in School" routine.</p>
+              <p><strong>Role:</strong> Editor, Animator.</p>
+              <p><strong>Developed using: </strong> Microsoft Paint and Windows Movie Maker.</p>
+            </div>
+          </section>
+      </main>
+    </div>
+    <footer>
+      <h2>Copyright 2017</h2>
+    </footer>
+  </body>
+</html>

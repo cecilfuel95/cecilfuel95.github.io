@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Portfolio | Production Design | Eric Kevin Cecil</title>
+    <meta name="keywords" content="eric, kevin, cecil, university, miami, 2018, resume, portfolio, graphic, design, game, development, animation, visual, effects, vfx, production, comedy, writing, cinematography">
+    <meta name="description" content="Eric Kevin Cecil's production design portfolio.">
+    <meta name="author" content="Eric Kevin Cecil">
+    <link rel="stylesheet" href="css/styles.css">
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js"
+    ></script>
+    <script src="jquery.sticky.js"></script>
+    <script>
+      $(window).resize(function() {
+        heightResize();
+      });
+      $(document).ready(function(){
+        heightResize();
+        if($(window).width() >= 640) {
+          $("#sticker").sticky({topSpacing:0});
+        }
+      });
+
+      function heightResize() {
+        var iframeWidth = $("iframe").outerWidth();
+        $("iframe").css("height", (iframeWidth*.5625));
+      }
+    </script>
+  </head>
+  <body>
+    <header>
+      <h1>Eric Kevin Cecil</h1>
+      <div id="contact">
+        <p>(812) 508-4032</p>
+        <p>cecilfuel95@miami.edu</p>
+      </div>
+    </header>
+    <nav class="nav" id="sticker">
+      <div>
+        <a href="index.html">Résumé</a>
+        <a href="grdesign.html">Graphic Design</a>
+        <a href="gamedev.html">Game Development</a>
+        <a href="vfx.html">Visual Effects</a>
+        <a href="proddesign.html">Production Design</a>
+        <a href="comedic.html">Comedic Writing</a>
+      </div>
+    </nav>
+    <div id="cover">
+      <main>
+        <h1>Portfolio: Production Design</h1>
+        <section>
+          <h2><em>Meme Boy, Episodes 1, 4, &amp; 8</em> (To Be Released)(2017)</h2>
+          <div class="description">
+            <p><strong>Description:</strong> Eight-episode webseries developed by Delta Kappa Alpha at the University of Miami.</p>
+            <p><strong>Series Synopsis:</strong> A college student tries to take control of his newfound Internet fame after becoming an embarrassing meme.</p>
+            <p><strong>Involvement:</strong> Working with a team to determine the mise-en-scène (visual style) of each episode, acquiring props and costumes, and organizing them within each scene.</p>
+          </div>
+        </section>
+        <section>
+          <h2><em>The Tartar Effect</em> (2017)</h2>
+          <iframe src="https://player.vimeo.com/video/203945867?color=c9ff23&title=0&byline=0&portrait=0" width="768" height="432" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+          <div class="description">
+            <p><strong>Description:</strong> Short independent project developed entirely within 24 hours.</p>
+            <p><strong>Synopsis:</strong> A secret agent uncovers a shocking secret about his long-dead brother.</p>
+            <p><strong>Role:</strong> Co-Writer, Co-Producer, Production Designer, VFX Artist.</p>
+          </div>
+        </section>
+        <section>
+          <h2><em>Finding Tori</em> (2016)</h2>
+          <iframe id="tori" src="https://player.vimeo.com/video/184428674?color=ff9933&title=0&byline=0&portrait=0" width="768" height="432" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+          <div class="description">
+            <p><strong>Description:</strong> Project developed for a Directing class. Filmed all in one take.</p>
+            <p><strong>Synopsis:</strong> Manny looks for his friend Tori in the haze of a raucous house party.</p>
+            <p><strong>Role:</strong> Actor, Production Designer.</p>
+          </div>
+        </section>
+        <section>
+          <h2><em>The Political Autobiography of Deez Nuts</em> (2016)</h2>
+          <iframe src="https://player.vimeo.com/video/162561377?title=0&byline=0&portrait=0" width="768" height="432" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+          <div class="description">
+            <p><strong>Description:</strong> Short mockumentary developed for a Film Production class.</p>
+            <p><strong>Synopsis:</strong> A look into the rise, fall, rise, and fall of enigmatic political figure Deez Nuts.</p>
+            <p><strong>Role:</strong> Writer, Co-Director, Producer, Actor, Editor, VFX Artist.</p>
+          </div>
+        </section>
+      </main>
+    </div>
+    <footer>
+      <h2>Copyright 2017</h2>
+    </footer>
+  </body>
+</html>
