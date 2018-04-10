@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>MakeMyMeme | Meme Generator Website</title>
+    <style>
+    /* ed186a
+    D4155F
+
+    009444
+    204721
+
+    d8d8d8*/
+      #cu {
+        margin-top: 599px;
+        margin-left: 565px;
+        border-radius: 12px;
+        height: 56px;
+        width: 199px;
+        background-image: url("letters-04-02.png");
+        background-size: 208px;
+        background-repeat: no-repeat;
+        background-position: center;
+        position: absolute;
+      }
+      #cu2 {
+        margin-top: 820px;
+        margin-left: 565px;
+        border-radius: 12px;
+        height: 56px;
+        width: 199px;
+        background-image: url("letters-04-02.png");
+        background-size: 208px;
+        background-repeat: no-repeat;
+        background-position: center;
+        position: absolute;
+      }
+
+      .button-3d.button-action, .button-3d.button-action:visited, .button-3d.button-action:hover, .button-3d.button-action:focus {
+        -webkit-box-shadow: 0 9px 0 #00612D, 0 8px 3px rgba(0, 0, 0, 0.3);
+              box-shadow: 0 9px 0 #00612D, 0 8px 3px rgba(0, 0, 0, 0.3);
+      }
+      .button-3d.button-action-flat.is-active {
+        background-color: #00612D;
+        border-color: #00612D;
+        color: white;
+      }
+
+    </style>
+    <link rel="stylesheet" href="style.css">
+    <style>
+      @import url('https://fonts.googleapis.com/css?family=Dosis');
+      html, body, p {
+        margin: 0;
+        padding: 0;
+      }
+      body{
+        background-image:  url("x103c3.png"), url("x103c.png");
+        background-size: 1600px;
+        background-repeat: no-repeat;
+        background-position: -520px -200px;
+      }
+      div {
+        width: 100%;
+      }
+      img {
+        margin-top: 0px;
+      }
+      a {
+
+      }
+      .button {
+        position: relative;
+        font-family: "Dosis";
+        font-weight: 900;
+        background-color: #009444;
+      }
+      .button:hover {
+        background-color: #009444;
+      }
+      #thisImg {
+          position: absolute;
+          width: 1600px;
+          margin-left: -520px;
+          margin-top: -200.75px;
+      }
+      #thatImg {
+          position: absolute;
+          width: 1600px;
+          margin-left: -520px;
+          margin-top: -200.75px;
+      }
+
+    </style>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  </head>
+  <body>
+    <div>
+      <img id="thisImg" src="x103c1-01.png" alt="">
+      <img id="thatImg" src="x103c2-01.png" alt="">
+      <a id="cu" class="button button-3d button-action button-pill"></a>
+      <a id="cu2" class="button button-3d button-action button-pill"></a>
+    </div>
+    <script>
+      $("#thisImg").hide(0);
+      $("#thatImg").hide(0);
+      $("#cu").click(function() {
+        $("#cu").animate({left: '+=0px'}, "fast");
+        $("#cu").hide(0);
+        $("#thisImg").show(0);
+      });
+      $("#cu2").click(function() {
+        $("#cu2").animate({left: '+=0px'}, "fast");
+        $("#cu2").hide(0);
+        $("#thatImg").show(0);
+      });
+    </script>
+  </body>
+</html>

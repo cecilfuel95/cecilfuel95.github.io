@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>MakeMyMeme | Meme Generator Website</title>
+    <style>
+    /* ed186a
+    D4155F
+
+    009444
+    204721
+
+    d8d8d8*/
+      #cu {
+        margin-top: 576px;
+        margin-left: 565px;
+        border-radius: 12px;
+        height: 56px;
+        width: 199px;
+        background-image: url("letters-04-02.png");
+        background-size: 208px;
+        background-repeat: no-repeat;
+        background-position: center;
+      }
+
+      .button-3d.button-action, .button-3d.button-action:visited, .button-3d.button-action:hover, .button-3d.button-action:focus {
+        -webkit-box-shadow: 0 9px 0 #00612D, 0 8px 3px rgba(0, 0, 0, 0.3);
+              box-shadow: 0 9px 0 #00612D, 0 8px 3px rgba(0, 0, 0, 0.3);
+      }
+      .button-3d.button-action-flat.is-active {
+        background-color: #00612D;
+        border-color: #00612D;
+        color: white;
+      }
+
+    </style>
+    <link rel="stylesheet" href="style.css">
+    <style>
+      @import url('https://fonts.googleapis.com/css?family=Dosis');
+      html, body, p {
+        margin: 0;
+        padding: 0;
+      }
+      body{
+        background-image:  url("x103bb11-01.png"), url("x103bb-01.png");
+        background-size: 1600px;
+        background-repeat: no-repeat;
+        background-position: -520px 0;
+      }
+      div {
+        width: 100%;
+      }
+      img {
+        margin-top: 0px;
+      }
+      a {
+
+      }
+      .button {
+        position: relative;
+        font-family: "Dosis";
+        font-weight: 900;
+        background-color: #009444;
+      }
+      .button:hover {
+        background-color: #009444;
+      }
+      #thisImg {
+          width: 1600px;
+          margin-left: -520px;
+          margin-top: 0px;
+      }
+
+    </style>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  </head>
+  <body>
+    <div>
+      <a id="cu" class="button button-3d button-action button-pill"></a>
+      <img id="thisImg" src="x103bb2-01.png" alt="">
+    </div>
+    <script>
+      $("#thisImg").hide(0);
+      $("#cu").click(function() {
+        // $("body").css("background-image":"url('x103ac-01.png')");
+        $("#cu").animate({left: '+=0px'}, "fast");
+        // $("#cu").animate({opacity: '0'});
+        $("#cu").hide(0);
+        $("#thisImg").show(0);
+      });
+    </script>
+  </body>
+</html>
